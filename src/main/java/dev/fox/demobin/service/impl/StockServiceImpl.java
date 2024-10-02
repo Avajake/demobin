@@ -1,7 +1,7 @@
 package dev.fox.demobin.service.impl;
 
 import dev.fox.demobin.common.ValidationDependenciesUtils;
-import dev.fox.demobin.dto.StockDto;
+import dev.fox.demobin.dto.Stockfa;
 import dev.fox.demobin.model.Stock;
 import dev.fox.demobin.repository.StockRepo;
 import dev.fox.demobin.response.Stock.StockNotFoundException;
@@ -43,21 +43,21 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
-    public StockDto getStockId(Long id) {
+    public Stockfa getStockId(Long id) {
         Optional<Stock> stockId = stockRepo.findById(id);
 
         if (!stockId.isPresent()) {
             throw new StockNotFoundException("Stock с id " + id + " не найден");
         }
 
-        return StockDto.toModel(stockId.get());
+        return Stockfa.toModel(stockId.get());
     }
 
     @Override
-    public List<StockDto> getStockAll() {
+    public List<Stockfa> getStockAll() {
         List<Stock> stocks = stockRepo.findAll();
         return stocks.stream()
-                .map(StockDto::toModel)
+                .map(Stockfa::toModel)
                 .collect(Collectors.toList());
     }
 }

@@ -1,12 +1,18 @@
 package dev.fox.demobin.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Value;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+/**
+ * DTO for {@link dev.fox.demobin.model.ProductType}
+ */
+@Value
 public class ProductTypeDto {
-    private String name;
+    Long id;
+    String name;
+    String description;
+    Long productDetailId;
+    double productDetailWeight;
+    double productDetailLength;
+    double productDetailWidth;
+    double productDetailHeight;
 }
